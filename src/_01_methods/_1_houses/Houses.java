@@ -22,6 +22,17 @@ public class Houses {
 			building(roof,size,color,rob);
 		}
 	}
+	static void pointyRoof(Robot rob) {
+		rob.turn(45);
+		rob.move(28);
+		rob.turn(90);
+		rob.move(28);	
+	}
+	static void flatRoof(Robot rob) {
+		rob.turn(90);
+		rob.move(20);
+		rob.turn(90);
+	}
 	static void building(String roof, String size, String col, Robot rob) {
 		rob.penDown();
 		if(col.equals("red")) {
@@ -40,15 +51,10 @@ public class Houses {
 			rob.setAngle(0);
 			rob.move(60);
 			if(roof.equals("flat")) {
-				rob.turn(90);
-				rob.move(20);
-				rob.turn(90);
+				flatRoof(rob);
 			} else {
-				rob.turn(45);
-				rob.move(28);
-				rob.turn(90);
-				rob.move(28);
-			}
+				pointyRoof(rob);
+			}	
 			rob.setAngle(180);
 			rob.move(60);
 			rob.turn(-90);
