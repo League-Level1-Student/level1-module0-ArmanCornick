@@ -51,6 +51,7 @@ public class RainGame extends PApplet {
 	int bucketHeight;
 	PImage bucket;
 	int y1 = 75;
+	int x12 = (int)random(500);
 	int y;
 	int x;
 
@@ -64,17 +65,22 @@ public class RainGame extends PApplet {
 	public void setup() {
 		bucket = loadImage("bucket.png");
 		bucket.resize(100, 100);
-		int x = (int)random(width);
+		
 	}
 
 	@Override
 	public void draw() {
 		background(100,100,100);
+		fill(0, 0, 0);
+		textSize(16);
+		text("Score: " + score, 20, 20);
 		fill(0,0,255);
-		ellipse(x,y1,50,50);
-		y1 += 2;
+		ellipse(x12,y1,50,50);
+		y1 += (score+1)*2;
 		if(y1>=450) {
-		y1 = 50;	
+		checkCatch(x12);
+		y1 = 50;
+		x12 = (int)random(500);
 		}
 		image(bucket, mouseX, 380); 
 	}
